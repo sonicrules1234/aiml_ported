@@ -1,0 +1,23 @@
+[package]
+name = "aiml_ported"
+version = "0.1.0"
+edition = "2018"
+description = "Port of python-aiml to rust. WARNING: This runs much slower than python-aiml. I recommend you use the saved brain."
+license-file = "LICENSE"
+repository = "https://github.com/sonicrules1234/aiml_ported"
+readme = "README.md"
+homepage = "https://github.com/sonicrules1234/aiml_ported"
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+glob = "0.3.0"
+regex = "1.5.4"
+serde = { version = "1.0.126", features = ["derive"] }
+chrono = "0.4.19"
+rand = "0.8.4"
+roxmltree = "0.14.1"
+acid-store = { version = "0.8.0", features = ["store-directory"] }
+thiserror = "1.0.29"
+rmp-serde = "0.15.5"
+sonic_serde_object = "0.1.0"
+serde_json = "1.0.67"
