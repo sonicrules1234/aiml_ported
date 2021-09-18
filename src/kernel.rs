@@ -61,6 +61,7 @@ impl Kernel {
         subbers.insert("person".to_string(), WordSub::new(defaultsubs::get_default_person()));
         subbers.insert("person2".to_string(), WordSub::new(defaultsubs::get_default_person2()));
         subbers.insert("normal".to_string(), WordSub::new(defaultsubs::get_default_normal()));
+        //println!("subbers normal {:?}", subbers["normal"].clone());
         Self {
             global_session_id: global_session_id.clone(),
             max_history_size: max_history_size,
@@ -328,6 +329,7 @@ impl Kernel {
         input_stack.push(input);
         self.set_predicate(self.input_stack.clone(), input_stack.value, Some(session_id));
         let mut subbed_input = self.subbers["normal"].clone().sub(input.to_string());
+        //println!("subbed input '{}'", subbed_input);
         let mut output_history = self.get_predicate(self.output_history.clone(), Some(session_id));
         //let mut topic = self.get_predicate("topic", Some(session_id));
         let mut that: String;

@@ -798,6 +798,7 @@ impl PatternMgr {
         }
         if found_right_star {
             if star_type.as_str() == "star" {
+                //println!("pattern {}", pattern);
                 let a = pattern.split_whitespace().map(|inword| inword.to_string()).collect::<Vec<String>>()[start_..(end)].join(" ");
                 //println!("return '{}'", a);
                 return a;
