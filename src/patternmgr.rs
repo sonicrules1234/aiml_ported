@@ -763,7 +763,7 @@ impl PatternMgr {
             if i < k {
                 continue;
             }
-            if j == pat_match.clone().unwrap().collect::<Vec<SonicObject>>().len() {
+            if j == pat_match.clone().unwrap().value.as_vec().unwrap().len() { //.unwrap().collect::<Vec<SonicObject>>().len() {
                 break;
             }
             if !found_right_star {
@@ -772,8 +772,8 @@ impl PatternMgr {
                     if num_stars as usize == index {
                         found_right_star = true;
                     }
-                    start_ = i as usize;
-                    k = i.clone();
+                    start_ = i.clone();
+                    //k = i.clone();
                     //while k < words.clone().unwrap().len() {
                     for k in i..(words.clone().unwrap().len()) {
                         if j + 1 == pat_match.clone().unwrap().collect::<Vec<SonicObject>>().len() {
@@ -798,17 +798,32 @@ impl PatternMgr {
         }
         if found_right_star {
             if star_type.as_str() == "star" {
+                //println!("start, end {} {}", start_, end);
                 //println!("pattern {}", pattern);
-                let a = pattern.split_whitespace().map(|inword| inword.to_string()).collect::<Vec<String>>()[start_..(end)].join(" ");
-                //println!("return '{}'", a);
-                return a;
+                let a = pattern.split_whitespace().map(|inword| inword.to_string()).collect::<Vec<String>>();//[start_..(end + 1)].join(" ");
+                let alen = a.len();
+                if end + 1 >= alen {
+                    end = alen - 2;
+                }
+                //println!("return, end '{}', {}", a[start_..(end + 1)].join(" "), end + 1);
+                return a[start_..=(end + 1)].join(" ");
             } else if star_type.as_str() == "thatstar" {
-                let a = that.split_whitespace().map(|inword| inword.to_string()).collect::<Vec<String>>()[start_..(end)].join(" ");
-                return a;
+                let a = that.split_whitespace().map(|inword| inword.to_string()).collect::<Vec<String>>();//[start_..(end + 1)].join(" ");
+                //return a;
+                let alen = a.len();
+                if end + 1 >= alen {
+                    end = alen - 2;
+                }
+                return a[start_..=(end + 1)].join(" ");
             } else if star_type.as_str() == "thatstar" {
-                let a = topic.split_whitespace().map(|inword| inword.to_string()).collect::<Vec<String>>()[start_..(end)].join(" ");
+                let a = topic.split_whitespace().map(|inword| inword.to_string()).collect::<Vec<String>>();//[start_..(end + 1)].join(" ");
                 //println!("{}", a);
-                return a;
+                //return a;
+                let alen = a.len();
+                if end + 1 >= alen {
+                    end = alen - 2;
+                }
+                return a[start_..=(end + 1)].join(" ");
             } else {
                 return String::new();
             }
