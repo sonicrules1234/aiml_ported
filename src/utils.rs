@@ -12,7 +12,7 @@ pub fn sentences(s: String) -> Vec<String> {
         let instring: String = charlist[pos..].iter().collect();
         match instring.chars().position(|c| c == '.') {
             Some(z) => {
-                p = z;
+                p = pos + z;
             },
             None => {
                 p = l;
@@ -20,7 +20,7 @@ pub fn sentences(s: String) -> Vec<String> {
         }
         match instring.chars().position(|c| c == '?') {
             Some(z) => {
-                q = z;
+                q = pos + z;
             },
             None => {
                 q = l;
@@ -28,7 +28,7 @@ pub fn sentences(s: String) -> Vec<String> {
         }
         match instring.chars().position(|c| c == '!') {
             Some(z) => {
-                e = z;
+                e = pos + z;
             },
             None => {
                 e = l;
