@@ -1,6 +1,6 @@
 [package]
 name = "aiml_ported"
-version = "0.1.3"
+version = "0.1.4"
 edition = "2018"
 description = "Port of python-aiml to rust. WARNING: This runs much slower than python-aiml. I recommend you use the saved brain."
 license-file = "LICENSE"

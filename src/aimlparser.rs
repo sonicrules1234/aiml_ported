@@ -513,7 +513,7 @@ impl AimlParser {
                 let v = attr.clone()[k].clone();
                 if k == "index" {
                     let mut temp: u32 = 0;
-                    match k.parse::<u32>() {
+                    match v.parse::<u32>() {
                         Ok(d) => {
                             temp = d.clone();
                         },
