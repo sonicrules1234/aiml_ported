@@ -307,9 +307,9 @@ impl AimlParser {
                     parent_attr.insert(key.as_str().unwrap().to_string(), y.get(key).unwrap().as_str().unwrap().to_string());
                 }
                 let (_required, _optional, can_be_parent) = self.validate_info.clone()[&parent].clone();
-                if text.as_str() == "HELLO" {
-                    println!("parent {:?}, parent_attr {:?}", parent, parent_attr);
-                }
+                //if text.as_str() == "HELLO" {
+                //    println!("parent {:?}, parent_attr {:?}", parent, parent_attr);
+                //}
                 let mut non_block_style_condition = parent.as_str() == "condition" && !(parent_attr.contains_key("name") && parent_attr.contains_key("value"));
                 if !can_be_parent {
                     return Err(AimlParserError::Error(format!("Unexpected text inside <{}> element {}", parent, self.location())));
